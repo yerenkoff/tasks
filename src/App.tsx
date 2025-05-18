@@ -21,6 +21,7 @@ function App() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(inputs));
   }, [inputs]);
 
+  // @ts-ignore
   const handleInputChange = (index, value) => {
     const updated = [...inputs];
     updated[index] = value;
@@ -36,7 +37,7 @@ function App() {
           inputs.map((el, i) => (
             <div className="task" key={i}>
               <h2>{(i < 10 ? "0" + i : i) + ":00"}</h2>
-              <input type="text" placeholder="What needs to be done?" onInput={(e) => handleInputChange(i, e.target.value)} value={el} />
+              <input type="text" placeholder="What needs to be done?" onInput={(e) => handleInputChange(i, (e.target as HTMLInputElement).value)} value={el} />
             </div>
           ))
         }
